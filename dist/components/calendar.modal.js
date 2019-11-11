@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var ionic_angular_1 = require("ionic-angular");
+var ionic_angular_1 = require("@ionic/angular");
 var calendar_service_1 = require("../services/calendar.service");
 var moment = require("moment");
 var config_1 = require("../config");

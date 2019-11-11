@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var ionic_angular_1 = require("ionic-angular");
+var ionic_angular_1 = require("@ionic/angular");
 var calendar_modal_1 = require("./components/calendar.modal");
 var calendar_service_1 = require("./services/calendar.service");
 var CalendarController = /** @class */ (function () {

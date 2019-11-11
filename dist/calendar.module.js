@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var calendar_controller_1 = require("./calendar.controller");
-var ionic_angular_1 = require("ionic-angular");
+var ionic_angular_1 = require("@ionic/angular");
 var calendar_service_1 = require("./services/calendar.service");
 var index_1 = require("./components/index");
 function calendarController(modalCtrl, calSvc) {

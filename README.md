@@ -35,7 +35,7 @@ live demo [click me](https://hsuanxyz.github.io/demo/ion2-calendar/).
 
 ### Installation
 
-`$ npm install ion4-calendar moment --save`
+`$ npm install git+https://github.com/temmo93/ion4-calendar-day-four-state.git moment --save`
 
 ### Import module
 
