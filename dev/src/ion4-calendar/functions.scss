@@ -1,0 +1,11 @@
+@function bindColors($color-value) {
+  @if ($color-value != cal-color) {
+    @return map-get($colors, $color-value)
+  } @else {
+    @if (type-of(map-get($colors, $color-value)) != color) {
+      @return #488aff
+    } @else {
+      @return map-get($colors, $color-value)
+    }
+  }
+}

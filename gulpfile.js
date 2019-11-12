@@ -3,7 +3,7 @@ const bump = require('gulp-bump');
 
 const paths = {
   dist: './dist',
-  dve: './dev/src/ion2-calendar',
+  dve: './dev/src/ion4-calendar',
   src: './src'
 };
 
