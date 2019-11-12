@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "allowUnreachableCode": false,
+    "allowSyntheticDefaultImports": true,
     "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": ["dom", "es2017"],
     "module": "commonjs",
     "moduleResolution": "node",
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
     "outDir": "./dist",
@@ -31,6 +32,7 @@
     "rewriteTsconfig": false
   },
   "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "genDir": "./dist"
