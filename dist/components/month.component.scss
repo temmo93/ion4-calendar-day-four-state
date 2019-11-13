@@ -178,9 +178,23 @@ ion-calendar-month {
         margin: 0 auto;
         padding: 0;
         height: 36px;
-        background-color: transparent;
+        // background-color: transparent;
         position: relative;
         z-index: 2;
+        &.day-availability-unconfirmed-exists,
+    		&.day-availability-records-not-exists,
+    		&.day-availability-lunch-not-exists,
+    		&.day-availability-dinner-not-exists {
+    			background-color: #f53d3d;
+    		}
+
+    		&.day-availability-records-exists {}
+    		&.day-availability-lunch-exists {}
+    		&.day-availability-dinner-exists {}
+
+    		&.day-availability-all-confirmed {
+    			background-color: #ffdd55;
+    		}
     }
     button.days-btn p {
         margin: 0;
