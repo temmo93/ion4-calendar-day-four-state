@@ -139,6 +139,17 @@
     }
   }
 
+  .days {
+    .multi4-confirm-unconfirmed {
+        border-radius: 50%;
+        border: 2px solid #EB445A;
+    }
+    .multi4-confirm-confirmed {
+        border-radius: 50%;
+        border: 2px solid #2DD36F;
+    }
+  }
+
   .days .on-selected p,
   .days .multi4-lunch p,
   .days .multi4-dinner p,
