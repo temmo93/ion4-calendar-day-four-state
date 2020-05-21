@@ -43,7 +43,7 @@
     "tsickle": "^0.34.0",
     "tslint": "~5.7.0",
     "tslint-eslint-rules": "^4.1.1",
-    "typescript": "^3.1.6",
+    "typescript": "~3.1.6",
     "zone.js": "0.8.26"
   },
   "keywords": [
@@ -69,5 +69,7 @@
       }
     }
   },
-  "dependencies": {}
+  "dependencies": {
+    "moment": "^2.26.0"
+  }
 }

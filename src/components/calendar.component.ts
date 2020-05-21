@@ -256,7 +256,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-  onChanged4($event): void {
+  onChanged4($event: CalendarDay[]): void {
       switch (this._d.pickMode) {
           case pickModes.MULTI4:
               let dates4 = new Array();
@@ -339,7 +339,6 @@ export class CalendarComponent implements ControlValueAccessor, OnInit {
       case 'object':
         return date.toObject();
     }
-    return date;
   }
 
   writeValue(obj: any): void {

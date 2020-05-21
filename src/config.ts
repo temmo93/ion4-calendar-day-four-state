@@ -12,7 +12,7 @@ export const pickModes = {
   MULTI4: 'multi4'
 };
 
-var multi4 = {
+let multi4: { [unit: string]: any } = {
     states: {
         cycle: [ 'lunch', 'dinner', 'all' ],
         index: {},

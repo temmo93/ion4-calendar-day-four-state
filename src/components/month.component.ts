@@ -65,7 +65,7 @@ export const MONTH_VALUE_ACCESSOR: any = {
                         [class.on-selected]="isSelected(day.time)"
                         [disabled]="day.disable">
                   <p>{{day.title}}</p>
-                  <small *ngIf="day.subTitle">{{day?.subTitle}}</small>
+                  <small *ngIf="day.subTitle">{{day?.subTitle}}</small>>
                   <img *ngIf="getMulti4State(day) == 'lunch'" src="assets/imgs/sun.png" />
                   <img *ngIf="getMulti4State(day) == 'dinner'" src="assets/imgs/moon.png" />
                   <ng-container *ngIf="getMulti4State(day) == 'all'">
@@ -190,21 +190,21 @@ export class MonthComponent implements ControlValueAccessor, AfterViewInit {
     }
   }
 
-  getMulti4Class(day) {
+  getMulti4Class(day: CalendarDay) {
     let index = this._date.findIndex(e => e !== null && e.time === day.time);
     if (index !== -1) {
-        let dayFounded = this._date[index];
-        return `multi4-${dayFounded.state} multi4-confirm-${dayFounded.confirm}`;
+      let dayFounded = this._date[index];
+      return `multi4-${dayFounded.state} multi4-confirm-${dayFounded.confirm}`;
     } else {
       return '';
     }
   }
 
-  getMulti4State(day) {
+  getMulti4State(day: CalendarDay) {
     let index = this._date.findIndex(e => e !== null && e.time === day.time);
     if (index !== -1) {
-        let dayFounded = this._date[index];
-        return dayFounded.state;
+      let dayFounded = this._date[index];
+      return dayFounded.state;
     } else {
       return '';
     }

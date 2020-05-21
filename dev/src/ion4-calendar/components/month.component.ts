@@ -190,7 +190,7 @@ export class MonthComponent implements ControlValueAccessor, AfterViewInit {
     }
   }
 
-  getMulti4Class(day) {
+  getMulti4Class(day: CalendarDay) {
     let index = this._date.findIndex(e => e !== null && e.time === day.time);
     if (index !== -1) {
       let dayFounded = this._date[index];
@@ -200,7 +200,7 @@ export class MonthComponent implements ControlValueAccessor, AfterViewInit {
     }
   }
 
-  getMulti4State(day) {
+  getMulti4State(day: CalendarDay) {
     let index = this._date.findIndex(e => e !== null && e.time === day.time);
     if (index !== -1) {
       let dayFounded = this._date[index];
