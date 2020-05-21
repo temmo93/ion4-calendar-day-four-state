@@ -30,7 +30,7 @@ import { pickModes } from "../config";
         </ion-buttons>
 
       </ion-toolbar>
-      
+
       <ng-content select="[sub-header]"></ng-content>
 
       <ion-calendar-week
@@ -42,7 +42,7 @@ import { pickModes } from "../config";
     </ion-header>
 
     <ion-content scrollEvents=true (ionScroll)="onScroll($event)" class="calendar-page"
-                 [ngClass]="{'multi-selection': _d.pickMode === 'multi'}">
+                 [ngClass]="{'multi-selection': _d.pickMode === 'multi' || _d.pickMode === 'multi4'}">
 
       <div #months>
         <ng-template ngFor let-month [ngForOf]="calendarMonths" [ngForTrackBy]="trackByIndex" let-i="index">
@@ -145,6 +145,11 @@ export class CalendarModal implements OnInit {
           this.datesTemp = defaultDates.map(e => this.calSvc.createCalendarDay(this._getDayTime(e), this._d));
         }
         break;
+      case pickModes.MULTI4:
+        if (defaultDates && defaultDates.length) {
+          this.datesTemp = defaultDates.map(e => this.calSvc.createCalendarDay(this._getDayTime(e), this._d));
+        }
+        break;
       default:
         this.datesTemp = [null, null]
     }
@@ -165,7 +170,7 @@ export class CalendarModal implements OnInit {
     this.datesTemp = data;
     this.ref.detectChanges();
 
-    if (pickMode !== pickModes.MULTI && autoDone && this.canDone()) {
+    if (pickMode !== pickModes.MULTI && pickMode !== pickModes.MULTI4 && autoDone && this.canDone()) {
       this.done();
     }
   }
@@ -195,6 +200,8 @@ export class CalendarModal implements OnInit {
       case pickModes.RANGE:
         return !!(this.datesTemp[0] && this.datesTemp[1]) && !!(this.datesTemp[0].time && this.datesTemp[1].time);
       case pickModes.MULTI:
+        return this.datesTemp.length > 0 && this.datesTemp.every(e => !!e && !!e.time);
+      case pickModes.MULTI4:
         return this.datesTemp.length > 0 && this.datesTemp.every(e => !!e && !!e.time);
       default:
         return false;

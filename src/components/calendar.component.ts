@@ -17,7 +17,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import * as moment_ from 'moment';
 const moment = moment_;
-import { defaults, pickModes } from "../config";
+import { defaults, pickModes, multi4 } from "../config";
 
 export const ION_CAL_VALUE_ACCESSOR: Provider = {
   provide: NG_VALUE_ACCESSOR,
@@ -65,6 +65,7 @@ export const ION_CAL_VALUE_ACCESSOR: Provider = {
                           [month]="monthOpt"
                           [readonly]="readonly"
                           (onChange)="onChanged($event)"
+                          (onChange4)="onChanged4($event)"
                           (swipe)="swipeEvent($event)"
                           (onSelect)="onSelect.emit($event)"
                           (onSelectStart)="onSelectStart.emit($event)"
@@ -255,6 +256,25 @@ export class CalendarComponent implements ControlValueAccessor, OnInit {
     }
   }
 
+  onChanged4($event): void {
+      switch (this._d.pickMode) {
+          case pickModes.MULTI4:
+              let dates4 = new Array();
+              for (let i = 0; i < $event.length; i++) {
+                  if ($event[i] && $event[i].time) {
+                      let dateItem = $event[i];
+                      dates4.push({
+                        date: this._handleType(dateItem.time),
+                        state: dateItem.state || multi4.states.firstName,
+                        confirm: dateItem.confirm || multi4.confirms.firstName
+                      });
+                  }
+              }
+              this.onChange.emit(dates4);
+          break;
+      }
+  }
+
   swipeEvent($event: any): void {
     const isNext = $event.deltaX < 0;
     if (isNext && this.canNext()) {
@@ -368,6 +388,28 @@ export class CalendarComponent implements ControlValueAccessor, OnInit {
           });
         } else {
           this._calendarMonthValue = [null, null];
+        }
+        break;
+
+      case 'multi4':
+        if (Array.isArray(value)) {
+          this._calendarMonthValue = value.map(e => {
+            return this._createCalendarDay(e)
+          });
+        } else {
+          if( value !== null && typeof value === 'object' ) {
+              let cmv = new Array();
+              for( let dateUnformatted in value ) {
+                  let day = value[dateUnformatted];
+                  let dateItem = this._createCalendarDay(dateUnformatted);
+                  dateItem['state'] = day['state'] || multi4.states.firstName;
+                  dateItem['confirm'] = day['confirm'] || multi4.confirms.firstName;
+                  cmv.push(dateItem);
+              }
+              this._calendarMonthValue = cmv;
+          } else {
+              this._calendarMonthValue = [null, null];
+          }
         }
         break;
 
