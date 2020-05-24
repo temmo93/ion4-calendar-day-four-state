@@ -24,6 +24,12 @@
 }
 
 @mixin month-color($background-color: primary, $color: #fff) {
+    .days-btn:focus {
+        outline: 0;
+        outline-color: transparent;
+        outline-style: none !important;
+    }
+
     button.days-btn small,
     .days .marked p,
     .days .today p {
