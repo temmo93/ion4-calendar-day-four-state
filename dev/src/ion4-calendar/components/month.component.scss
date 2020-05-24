@@ -27,9 +27,7 @@
     button.days-btn small,
     .days .marked p,
     .days .today p {
-        color: bindColors($background-color);
-    }
-    .days .today p {
+        color: black !important;
         font-weight: 700;
     }
     .days .last-month-day p,
